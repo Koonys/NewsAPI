@@ -1,6 +1,6 @@
 const API_KEY = `4564c48784eb454390f0f4dcd82383e9`
 const url1=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
-const url2="http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines";
+const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 let news =[];
 const getLatestNews= async ()=>{
   const url = new URL(url2);
