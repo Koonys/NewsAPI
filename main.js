@@ -4,7 +4,7 @@ const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 moment.locale("ko");
 let newsList =[];
 const getLatestNews= async (string)=>{
-  const requestUrl = new URL(url1+`${string==null?'&apiKey='+API_KEY:'&category='+string+'&apiKey='+API_KEY}`);
+  const requestUrl = new URL(url2+`${string==null?'':'&category='+string}`);
   console.log("uuu:",requestUrl);
 
   const response = await fetch(requestUrl);
