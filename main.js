@@ -16,6 +16,12 @@ const getLatestNews= async (string)=>{
   console.log("aaa",newsList);
 };
 
+function searchToggle(){
+  const searchSpan = document.querySelector(".input-span");
+  searchSpan.classList.toggle("show");
+}
+
+
 const render =()=>{
   const newsHTML = newsList.map(
     news=>{
@@ -49,7 +55,7 @@ const render =()=>{
       return `
       <div class="row news">
         <div class="col-lg-4 text-center">
-          <img class="new-img-size" src="${imageUrl()}"/>
+          <img class="new-img-size" alt="뉴스이미지" src="${imageUrl()}" onerror="this.src=${imageUrl()}"/>
         </div>
         <div class="col-lg-8">
           <h2>${news.title}</h2>
