@@ -3,8 +3,17 @@ const url1=`https://newsapi.org/v2/top-headlines?country=us`;
 const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 moment.locale("ko");
 let newsList =[];
-const getLatestNews= async (string)=>{
-  const requestUrl = new URL(url2+`${string==null?'':'?category='+string}`);
+let categoryAll = null;
+const getLatestNews= async (category, search)=>{
+  categoryAll = category;
+  const requestUrl = new URL(url2);
+  
+  if(category!=null){
+    requestUrl.searchParams.append('category',category);
+  }
+  if(search!=null){
+    requestUrl.searchParams.append('q',search);
+  }
   console.log("uuu:",requestUrl);
 
   const response = await fetch(requestUrl);
@@ -21,6 +30,13 @@ function searchToggle(){
   searchSpan.classList.toggle("show");
 }
 
+const search = document.getElementById("search-input");
+const searchBtn = document.querySelector(".search-button");
+
+searchBtn.addEventListener("click",()=>{
+  let q = search.value;
+  getLatestNews(categoryAll,q);
+});
 
 const render =()=>{
   const newsHTML = newsList.map(
@@ -55,7 +71,7 @@ const render =()=>{
       return `
       <div class="row news">
         <div class="col-lg-4 text-center">
-          <img class="new-img-size" alt="뉴스이미지" src="${imageUrl()}" onerror="this.src=${imageUrl()}"/>
+          <img class="new-img-size" alt="뉴스이미지" src="${imageUrl()}" onError="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS26LFm6Ztu_0onvo97ZjZ8LHkErhUbRqTGE0Ak5aVgUA&s';"/>
         </div>
         <div class="col-lg-8">
           <h2>${news.title}</h2>
