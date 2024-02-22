@@ -1,12 +1,12 @@
 const API_KEY = `4564c48784eb454390f0f4dcd82383e9`
-const url1=`https://newsapi.org/v2/top-headlines?country=us`;
+const url1=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 moment.locale("ko");
 let newsList =[];
 let categoryAll = null;
 const getLatestNews= async (category, search)=>{
   categoryAll = category;
-  const requestUrl = new URL(url2);
+  const requestUrl = new URL(url1);
 
   if(category!=null){
     requestUrl.searchParams.append('category',category);
