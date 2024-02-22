@@ -7,7 +7,7 @@ let categoryAll = null;
 const getLatestNews= async (category, search)=>{
   categoryAll = category;
   const requestUrl = new URL(url2);
-  
+
   if(category!=null){
     requestUrl.searchParams.append('category',category);
   }
@@ -32,6 +32,13 @@ function searchToggle(){
 
 const search = document.getElementById("search-input");
 const searchBtn = document.querySelector(".search-button");
+
+search.addEventListener("keyup",(e)=>{
+  if(e.key=='Enter'){
+    let q = search.value;
+    getLatestNews(categoryAll,q);  
+  }
+})
 
 searchBtn.addEventListener("click",()=>{
   let q = search.value;
