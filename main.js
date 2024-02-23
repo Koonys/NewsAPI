@@ -8,7 +8,7 @@ let alertCount=0;
 const getLatestNews= async (category, search)=>{
   try{
     categoryAll = category;
-    const requestUrl = new URL(url2);
+    const requestUrl = new URL(url1);
   
     if(category!=null){
       requestUrl.searchParams.append('category',category);

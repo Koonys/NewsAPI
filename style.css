@@ -95,3 +95,13 @@
     margin-top: 5px;
     margin-bottom: 0px;
 }
+
+.offcanvas{
+    --bs-offcanvas-width: 250px
+}
+
+@media (max-width: 576px){
+    .offcanvas{
+        --bs-offcanvas-width: 180px
+    }
+}
