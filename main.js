@@ -4,6 +4,7 @@ const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 moment.locale("ko");
 let newsList =[];
 let categoryAll = null;
+let q = null;
 const getLatestNews= async (category, search)=>{
   categoryAll = category;
   const requestUrl = new URL(url1);
@@ -35,13 +36,13 @@ const searchBtn = document.querySelector(".search-button");
 
 search.addEventListener("keyup",(e)=>{
   if(e.key=='Enter'){
-    let q = search.value;
+    q = search.value;
     getLatestNews(categoryAll,q);  
   }
 })
 
 searchBtn.addEventListener("click",()=>{
-  let q = search.value;
+  q = search.value;
   getLatestNews(categoryAll,q);
 });
 
