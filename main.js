@@ -1,28 +1,53 @@
 const API_KEY = `4564c48784eb454390f0f4dcd82383e9`
-const url1=`https://newsapi.org/v2/top-headlines?country=us`;
+const url1=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 const url2="https://musical-strudel-f7ea63.netlify.app//top-headlines";
 moment.locale("ko");
 let newsList =[];
 let categoryAll = null;
+let alertCount=0;
 const getLatestNews= async (category, search)=>{
-  categoryAll = category;
-  const requestUrl = new URL(url2);
-
-  if(category!=null){
-    requestUrl.searchParams.append('category',category);
+  try{
+    categoryAll = category;
+    const requestUrl = new URL(url2);
+  
+    if(category!=null){
+      requestUrl.searchParams.append('category',category);
+    }
+    if(search!=null){
+      requestUrl.searchParams.append('q',search);
+    }
+    console.log("uuu:",requestUrl);
+  
+    const response = await fetch(requestUrl);
+    const data = await response.json();
+    if(response.status==200){
+      newsList = data.articles;
+      if(data.articles.length<1){
+        throw new Error("검색결과가 없습니다. 다른 키워드로 검색해주세요.");
+      }
+      render();
+    }else{
+      throw new Error(data.message)
+    }
+    alertCount = 0;
+    searchInput.value="";
+  }catch(error){
+    const newsBoard = document.getElementById("news-board");
+    let divElement = document.createElement("div");
+    divElement.classList.add("alert", "alert-danger");
+    divElement.setAttribute("role", "alert");
+    divElement.textContent = error.message;
+    if(alertCount==0){
+      newsBoard.insertBefore(divElement, newsBoard.firstChild);
+      alertCount++;
+    }else{
+      divElement = document.querySelector(".alert");
+      divElement.style.visibility = "hidden";
+    }
+    setTimeout(()=>{
+      divElement.style.visibility = "visible";
+    },50)
   }
-  if(search!=null){
-    requestUrl.searchParams.append('q',search);
-  }
-  console.log("uuu:",requestUrl);
-
-  const response = await fetch(requestUrl);
-  const data = await response.json();
-  newsList = data.articles;
-  console.log("rrr",response);
-  console.log("ddd",data);
-  render();
-  console.log("aaa",newsList);
 };
 
 function searchToggle(){
@@ -30,18 +55,22 @@ function searchToggle(){
   searchSpan.classList.toggle("show");
 }
 
-const search = document.getElementById("search-input");
+const searchInput = document.getElementById("search-input");
 const searchBtn = document.querySelector(".search-button");
 
-search.addEventListener("keyup",(e)=>{
+searchInput.addEventListener("keyup",(e)=>{
   if(e.key=='Enter'){
-    let q = search.value;
-    getLatestNews(categoryAll,q);  
+    q = searchInput.value;
+    getLatestNews(categoryAll,q);
   }
 })
 
+searchInput.addEventListener("focus",()=>{
+  searchInput.value="";
+})
+
 searchBtn.addEventListener("click",()=>{
-  let q = search.value;
+  q = searchInput.value;
   getLatestNews(categoryAll,q);
 });
 
