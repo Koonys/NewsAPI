@@ -170,14 +170,20 @@ const render =()=>{
     };
       return `
       <div class="row news">
+        
         <div class="col-lg-4 text-center">
+        <a href="${news.url}" target="_blank">
           <img class="new-img-size" alt="뉴스이미지" src="${imageUrl()}" onError="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS26LFm6Ztu_0onvo97ZjZ8LHkErhUbRqTGE0Ak5aVgUA&s';"/>
+          </a>
         </div>
         <div class="col-lg-8">
+        <a href="${news.url}" target="_blank" class="customLink">
           <h2>${news.title}</h2>
           <p>${description()}</p>
+          </a>
           <div>${source()} * ${dateCal()}</div>
         </div>
+        
       </div>
       `;
     }

@@ -37,9 +37,23 @@
     border-bottom: 2px solid black;
 }
 
+.news a{
+    display: block;
+}
+
 .news:hover{
     background-color: #fff0ff;
-    cursor: pointer;;
+}
+
+.customLink{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.customLink:hover{
+    text-decoration: none;
+    color:thistle;
 }
 
 .search{
