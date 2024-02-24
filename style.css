@@ -73,6 +73,7 @@
     border: 1px solid gray;
     height: 33px;
     border-radius: 4px;
+    width: 150px;
 }
 
 #search::before{
@@ -97,11 +98,39 @@
 }
 
 .offcanvas{
-    --bs-offcanvas-width: 250px
+    --bs-offcanvas-width: 250px;
+    opacity: 0.9;
+}
+
+.offcanvas-body{
+    opacity: 0.9;
 }
 
 @media (max-width: 576px){
     .offcanvas{
         --bs-offcanvas-width: 180px
+    }
+}
+
+.navbar-toggler{
+    border: none;
+    --bs-navbar-toggler-focus-width: 0px;
+}
+
+.pagination{
+    margin-top: 5px;
+}
+
+.pagination *{
+    cursor: pointer;
+}
+
+.pagination a:hover{
+    background-color: deepskyblue;
+}
+
+@media (min-width: 992px){
+    .navbar-toggler{
+        display: none;
     }
 }

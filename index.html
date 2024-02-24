@@ -16,8 +16,8 @@
   <body>
     <section class="container">
       <section class="app-title">
-        <div class="search">
-          <span style="display: inline">
+        <div class="search row justify-content-between">
+          <span class="col" style="display: inline; text-align: left; padding: 0px;">
             <button class="search-icon" onclick="searchToggle()">
               <i class="fa-solid fa-magnifying-glass fa-xl" id="search"></i>
             </button>
@@ -29,6 +29,19 @@
               /><button class="search-button">GO!</button>
             </span>
           </span>
+          <div class="navbar col-2" style="padding: 0px; margin: 0px; text-align: right;">
+              <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasNavbar"
+                  aria-controls="offcanvasNavbar"
+                  aria-label="Toggle navigation"
+                  style="margin-left: auto; border: none;"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+          </div>
         </div>
         <div class="head-line">
           <svg viewBox="0 0 184 25" fill="#000" aria-hidden="true">
@@ -39,16 +52,7 @@
         </div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary menus">
           <div class="container-fluid">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            
             <div
               class="offcanvas offcanvas-end"
               tabindex="-1"
@@ -107,6 +111,10 @@
           </div>
         </div>
       </section>
+      <nav style="display: flex; justify-content: center;">
+        <ul class="pagination">
+        </ul>
+      </nav>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
     <script
