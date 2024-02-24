@@ -192,5 +192,6 @@ const render =()=>{
   paginationRender();
 };
 
+
 getLatestNews();
 
