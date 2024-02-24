@@ -64,7 +64,7 @@ nav.forEach((nav)=>{
 const getLatestNews= async (category, search, pageNum)=>{
   try{
     categoryAll = category;
-    const requestUrl = new URL(url1);
+    const requestUrl = new URL(url2);
   
     if(category!=null){
       requestUrl.searchParams.set('category',category);
